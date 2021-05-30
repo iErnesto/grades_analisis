@@ -1,0 +1,5 @@
+"Jorge"		10
+"Luis" 		7
+"Carlos"		6
+"Mario"		8
+"Jose"		5
