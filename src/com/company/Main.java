@@ -3,12 +3,10 @@ package com.company;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Collections;
+
 
 public class Main {
-
 
     public static void main(String[] args) throws FileNotFoundException {
         String name = "";
@@ -19,29 +17,26 @@ public class Main {
         int maxGrade = 0;
 
 
-        //Creating Maps
-        HashMap<Integer, Student> studentMap = new HashMap<Integer, Student>();
+        //  Read names and grades from txt File
 
-        // 1) Read names and grades
         File gradesFile = new File("src/grades.txt");
         Scanner sc = new Scanner(gradesFile);
 
-        ArrayList<Student> list = new ArrayList<Student>(); //ArrayList with Student class
+        //ArrayList with Student object
+        ArrayList<Student> list = new ArrayList<Student>();
 
         while (sc.hasNext()) {
+
             name = sc.next();
             grade = sc.nextInt();
 
+            //record is an object from Student class to gather the info of grades and names
             Student record = new Student(name, grade);
             list.add(record);
-
-
         }
-        //System.out.printf(String.valueOf(list));
-
+        //Iterating list to get Statics: average, max, min and total.
         for (Student record : list) {
             System.out.println(record);
-            //System.out.println(record.getName());
             totalGrades = totalGrades + record.getGrade();
             if (record.getGrade() > maxGrade) {
                 maxGrade = record.getGrade();
@@ -49,8 +44,6 @@ public class Main {
             if (record.getGrade() < minGrade) {
                 minGrade = record.getGrade();
             }
-
-
         }
 
         average = totalGrades / list.size();
@@ -63,6 +56,7 @@ public class Main {
     }
 }
 
+//Class Student which has a constructor with 2 parameters for each value
 
 class Student {
     private String name;
